@@ -1,4 +1,4 @@
-# <img src="./src/images/antimicrox.png" alt="Icon" width="60"/> AntiMicroX
+# <img src="./src/images/antimicrox.png" alt="Icon" width="60"/> AntiMicroF
 
 1. [Description](#description)  
 2. [License](#license)  
@@ -7,18 +7,18 @@
 5. [Command Line](#command-line) 
 6. [D-Bus](#d-bus)
 7. [Testing Under Linux](#testing-under-linux)
-8. [AntiMicroX Profiles](#antimicrox-profiles)
+8. [AntiMicroF Profiles](#antimicrox-profiles)
 9. [Support](#support)
 
 ## ❗Looking for a new maintainer❗
 
-Due to lack of time and shifting focus of its developer AntiMicroX is looking for a new maintainer willing to continue development.   
+Due to lack of time and shifting focus of its developer AntiMicroF is looking for a new maintainer willing to continue development.   
 For now, this app will have only limited support and will not get any new features (unless coded by external contributors).   
 [Link to discussion](https://github.com/AntiMicroX/antimicrox/discussions/1171)
 
 ## Description
 
-AntiMicroX is a graphical program used to map gamepad keys to keyboard, mouse, scripts and macros. You can use this program to control any desktop application with a gamepad on Linux🐧 and Windows 🪟.  
+AntiMicroF is a graphical program used to map gamepad keys to keyboard, mouse, scripts and macros. You can use this program to control any desktop application with a gamepad on Linux🐧 and Windows 🪟.  
 It can be also used for generating SDL2 configuration (useful for mapping atypical gamepads to generic ones like xbox360).
 
 We support X.org and Wayland.
@@ -238,7 +238,7 @@ This includes:
 API set indices are 0-based, but they are displayed in the UI with 1-based
 labels.
 
-#### Method: io.github.antimicrox.InputDevice.getActiveSetName()
+#### Method: io.github.antimicroF.InputDevice.getActiveSetName()
 
 `getActiveSetName()` returns the name of the current set for this device.
 
