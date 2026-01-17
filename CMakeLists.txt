@@ -1,4 +1,4 @@
-## antimicrox Gamepad to KB+M event mapper
+## antimicroF Gamepad to KB+M event mapper
 ## Copyright (C) 2015 Travis Nickles <nickles.travis@gmail.com>
 ## Copyright (C) 2020 Jagoda Górska <juliagoda.pl@protonmail.com>
 ## Copyright (C) 2020 Paweł Kotiuk <kotiuk@zohomail.eu>
@@ -18,7 +18,7 @@
 
 
 cmake_minimum_required(VERSION 3.12)
-project(antimicrox)
+project(antimicroF)
 
 if(POLICY CMP0071)
     cmake_policy(SET CMP0071 NEW)
@@ -59,9 +59,9 @@ else()
 endif(NOT COMPILER_IS_MSVC)
 
 # The version number.
-set(ANTIMICROX_MAJOR_VERSION 3)
-set(ANTIMICROX_MINOR_VERSION 5)
-set(ANTIMICROX_PATCH_VERSION 1)
+set(ANTIMICROF_MAJOR_VERSION 3)
+set(ANTIMICROF_MINOR_VERSION 5)
+set(ANTIMICROF_PATCH_VERSION 1)
 
 if(UNIX)
     option(WITH_X11 "Compile with support for X11." ON)
@@ -79,7 +79,7 @@ option(USE_QT6_BY_DEFAULT "Use Qt6 if available (if not available fallback to QT
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source." OFF)
 option(TRANS_REMOVE_OBSOLETE "Add -noobsolete option to lupdate command to get rid of old text entries" OFF)
 option(ATTACH_FAKE_CLASSES "Fake classes can be used in application to tests functionalities" OFF)
-option(ANTIMICROX_PKG_VERSION "Manually define version of package displayed in info tab" OFF)
+option(ANTIMICROF_PKG_VERSION "Manually define version of package displayed in info tab" OFF)
 option(CHECK_FOR_UPDATES "Enable checking for updates using GitHub REST API." OFF)
 option(BUILD_DOCS "Build documentation" OFF)
 option(WITH_TESTS "Allow tests for classes" OFF)
@@ -88,10 +88,10 @@ if(WITH_TESTS)
     message("Tests enabled")
 endif(WITH_TESTS)
 
-if(ANTIMICROX_PKG_VERSION)
+if(ANTIMICROF_PKG_VERSION)
     message("This build will be marked as: ${ANTIMICROX_PKG_VERSION}")
-    add_compile_definitions(ANTIMICROX_PKG_VERSION="${ANTIMICROX_PKG_VERSION}")
-endif(ANTIMICROX_PKG_VERSION)
+    add_compile_definitions(ANTIMICROF_PKG_VERSION="${ANTIMICROX_PKG_VERSION}")
+endif(ANTIMICROF_PKG_VERSION)
 
 if(CHECK_FOR_UPDATES)
     message("This build will check for updates using GitHub API.")
@@ -123,9 +123,9 @@ endif(UNIX)
 # PLATFORM-INDEPENDENT FILES
 ###############################
 
-set(antimicrox_MAIN src/main.cpp)
+set(antimicroF_MAIN src/main.cpp)
 
-set(antimicrox_SOURCES
+set(antimicroF_SOURCES
         src/antimicrosettings.cpp
         src/antkeymapper.cpp
         src/applaunchhelper.cpp
@@ -256,7 +256,7 @@ set(antimicrox_SOURCES
         src/xmlconfigwriter.cpp
         )
 
-set(antimicrox_HEADERS
+set(antimicroF_HEADERS
         src/antimicrosettings.h
         src/antkeymapper.h
         src/applaunchhelper.h
@@ -392,16 +392,16 @@ set(antimicrox_HEADERS
         )
 
 if(ATTACH_FAKE_CLASSES)
-    LIST(APPEND antimicrox_SOURCES
+    LIST(APPEND antimicrof_SOURCES
             src/fakeclasses/xbox360wireless.cpp
             )
 
-    LIST(APPEND antimicrox_HEADERS
+    LIST(APPEND antimicrof_HEADERS
             src/fakeclasses/xbox360wireless.h
             )
 endif(ATTACH_FAKE_CLASSES)
 
-set(antimicrox_FORMS
+set(antimicrof_FORMS
         src/gui/aboutdialog.ui
         src/gui/addeditautoprofiledialog.ui
         src/gui/advancebuttondialog.ui
@@ -426,7 +426,7 @@ set(antimicrox_FORMS
         src/gui/setnamesdialog.ui
         )
 
-set(antimicrox_RESOURCES src/resources.qrc)
+set(antimicroF_RESOURCES src/resources.qrc)
 
 ###############################
 # PLATFORM-DEPENDENT FILES
@@ -434,13 +434,13 @@ set(antimicrox_RESOURCES src/resources.qrc)
 
 if(UNIX)
     if(WITH_X11)
-        LIST(APPEND antimicrox_SOURCES src/x11extras.cpp
+        LIST(APPEND antimicroF_SOURCES src/x11extras.cpp
                 src/qtx11keymapper.cpp
                 src/unixcapturewindowutility.cpp
                 src/autoprofilewatcher.cpp
                 src/gui/capturedwindowinfodialog.cpp
                 )
-        LIST(APPEND antimicrox_HEADERS src/x11extras.h
+        LIST(APPEND antimicroF_HEADERS src/x11extras.h
                 src/qtx11keymapper.h
                 src/unixcapturewindowutility.h
                 src/autoprofilewatcher.h
@@ -448,24 +448,24 @@ if(UNIX)
                 )
 
         if(WITH_XTEST)
-            LIST(APPEND antimicrox_SOURCES src/eventhandlers/xtesteventhandler.cpp)
-            LIST(APPEND antimicrox_HEADERS src/eventhandlers/xtesteventhandler.h)
+            LIST(APPEND antimicroF_SOURCES src/eventhandlers/xtesteventhandler.cpp)
+            LIST(APPEND antimicroF_HEADERS src/eventhandlers/xtesteventhandler.h)
         endif(WITH_XTEST)
     endif(WITH_X11)
 
     if(WITH_UINPUT)
-        LIST(APPEND antimicrox_SOURCES src/qtuinputkeymapper.cpp
+        LIST(APPEND antimicroF_SOURCES src/qtuinputkeymapper.cpp
                 src/uinputhelper.cpp
                 src/eventhandlers/uinputeventhandler.cpp
                 )
-        LIST(APPEND antimicrox_HEADERS src/qtuinputkeymapper.h
+        LIST(APPEND antimicroF_HEADERS src/qtuinputkeymapper.h
                 src/uinputhelper.h
                 src/eventhandlers/uinputeventhandler.h
                 )
     endif(WITH_UINPUT)
 
 elseif(WIN32)
-    LIST(APPEND antimicrox_SOURCES
+    LIST(APPEND antimicroF_SOURCES
         src/autoprofilewatcher.cpp
         src/winextras.cpp
          src/qtwinkeymapper.cpp
@@ -474,7 +474,7 @@ elseif(WIN32)
          src/eventhandlers/winsendinputeventhandler.cpp
          src/joykeyrepeathelper.cpp
     )
-    LIST(APPEND antimicrox_HEADERS
+    LIST(APPEND antimicroF_HEADERS
         src/autoprofilewatcher.h
         src/winextras.h
         src/qtwinkeymapper.h
@@ -483,7 +483,7 @@ elseif(WIN32)
         src/eventhandlers/winsendinputeventhandler.h
         src/joykeyrepeathelper.h
     )
-    LIST(APPEND antimicrox_FORMS
+    LIST(APPEND antimicroF_FORMS
         src/gui/winappprofiletimerdialog.ui    
     )
 endif(UNIX)
